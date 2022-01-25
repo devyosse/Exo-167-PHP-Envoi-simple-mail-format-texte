@@ -6,12 +6,13 @@
  * 3. Déployez sur votre serveur et testez !
  */
 
-$from = '';
-$to = '';
-$message = 'Hello World, sending a simple mail !';
+$from = 'j.conan@fondation.org';
+$to = 'arnold.schwarzi@gmail.com';
+//$subject = "Un mail avec une en-tête";
+//$message = 'Hello World, sending a simple mail !';
 // TODO Votre code ici.
-
-
+//$message = wordwrap($message, 70, "/r/n");
+//mail('arnorld.schwarzi@gmail.com', 'SUjet: Avec découpe 70 cara', $message);
 /**
  * 4. Commentez le code précédent, mais gardez les variables $from et $to
  * 5. Définissez un message long d'au moins 120 caractères au choix.
@@ -24,3 +25,15 @@ $message = 'Hello World, sending a simple mail !';
  *     N'écrasez pas les valeurs déjà existantes ( s'il y en a ).
  */
 // TODO Votre code ici.
+
+$message = "Voici un mail qui va faire énormement de caractère pour les besoins de l'exercice, et le sujet de ce mail est PHP mdr :)";
+$message = wordwrap($message, 70, "/r/n");
+
+if (mail($to, $from, $message)) {
+    echo "Le message à bien été envoyé. Merci !";
+}
+else {
+    echo "Une erreur est survenue lors de l'envoi du mail";
+}
+
+file_put_contents('mails.txt', $message);
